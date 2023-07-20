@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3000
+const port = 3001
 const user = require('./method/query/userMethod')
 const feedback = require('./method/query/feedbackMethod')
 
@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
   res.send('Solusi 1 Interview Naufal for Nicolas')
 })
 
+
+// app.get('/users', (req, res) => {
+//   res.send(user.getUsers)
+// })
+
 app.get('/users', user.getUsers)
 app.get('/user/:id', user.getUserById)
 app.get('/username/:username', user.getUserByUsername)
@@ -32,6 +37,6 @@ app.put('/feedback/:id', feedback.updateFeedback)
 app.delete('/feedback/:id', feedback.deleteFeedback)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`node berjalan ${port}`)
 })
 

@@ -1,10 +1,11 @@
 const Pool = require('pg').Pool
+
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'postgres',
   password: '12345',
-  port: 5432,
+  port: 5434, //jangan lupa ubah portnya.
 })
 
 
@@ -13,9 +14,11 @@ const getFeedbacks = (request, response) => {
       if (error) {
         throw error
       }
+      console.log('berhasil')
       response.status(200).json(results.rows)
     })
 }
+
 
 const getFeedbackById = (request, response) => {
     const id = parseInt(request.params.id)
