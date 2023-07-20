@@ -5,7 +5,7 @@ const pool = new Pool({
   host: 'localhost',
   database: 'postgres',
   password: '12345',
-  port: 5434, //jangan lupa ubah portnya.
+  port: 5432, //jangan lupa ubah portnya.
 })
 
 
@@ -14,7 +14,7 @@ const getFeedbacks = (request, response) => {
       if (error) {
         throw error
       }
-      console.log('berhasil')
+      console.log('berhasil menampilkan feedback')
       response.status(200).json(results.rows)
     })
 }
@@ -38,6 +38,7 @@ const createFeedback = (request, response) => {
       if (error) {
         throw error
       }
+      console.log('berhasil manambahkan feedback')
       response.status(201).send(`${type} added with name: ${results.rows[0].sender}`)
     })
 }
