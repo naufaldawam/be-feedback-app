@@ -4,7 +4,8 @@ const app = express()
 const port = 3001
 const user = require('./method/query/userMethod')
 const feedback = require('./method/query/feedbackMethod')
-
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use(bodyParser.json())
 
