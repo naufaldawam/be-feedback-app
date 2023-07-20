@@ -30,6 +30,23 @@ const getUserById = (request, response) => {
     })
 }
 
+const getUserByUsername = (request, response) => {
+  const {username,email} = request.params;
+
+  pool.query('SELECT * FROM useradmin WHERE username = $1 OR email = $2 LIMIT 1', [username , email], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    if (results.rows.length === 0) {
+      response.status(404).json({ message: 'User not found' });
+    } else {
+      const user = results.rows[0];
+      response.status(200).json(user);
+    }
+  });
+};
+
+
 const createUser = (request, response) => {
     const { username, email, password } = request.body
   
@@ -72,6 +89,7 @@ const deleteUser = (request, response) => {
 module.exports = {
 getUsers,
 getUserById,
+getUserByUsername,
 createUser,
 updateUser,
 deleteUser,

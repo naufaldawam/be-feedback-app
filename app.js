@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.get('/users', user.getUsers)
 app.get('/user/:id', user.getUserById)
+app.get('/username/:username', user.getUserByUsername)
 app.post('/user', user.createUser)
 app.put('/user/:id', user.updateUser)
 app.delete('/user/:id', user.deleteUser)
